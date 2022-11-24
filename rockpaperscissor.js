@@ -5,11 +5,14 @@ function getComputerChoice(){
         case 1:
             return 'Paper';
         case 2:
-            return 'Scisscors';
+            return 'Scissors';
     }
 }
-function play(playerSelection = prompt('Please enter your choice').toLowerCase, computerSelection = getComputerChoice().toLowerCase){
+function play(playerSelection = prompt('Please enter your choice'), computerSelection = getComputerChoice()){
+    console.log(` You typed '${playerSelection}', the Computer chose '${computerSelection}'`)
     let result
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
     if (playerSelection == 'rock'){
         switch (computerSelection){
             case 'rock':
@@ -31,7 +34,7 @@ function play(playerSelection = prompt('Please enter your choice').toLowerCase, 
             case 'paper':
                 result = 'tie';
                 break;
-            case 'scisscors':
+            case 'scissors':
                 result = 'lose'
                 break;
         }
@@ -55,16 +58,17 @@ function play(playerSelection = prompt('Please enter your choice').toLowerCase, 
     let explanation;
     switch (result){
         case 'win':
-            explanation = `${playerSelection} beats ${computerSelection}`;
+            explanation = `${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}`;
             break;
         case 'lose':
-            explanation = `${playerSelection} beats ${computerSelection}`;
+            explanation = `${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}`;
             break;
         case 'tie':
-            explanation = `You both chose ${playerSelection}`;
+            explanation = `You both chose ${playerSelection.toUpperCase()}`;
             break;
-
-    }
-    return (`You ${result}! ${explanation}`);
+        }
+        return (`You ${result}! ${explanation}`);
 }
-console.log(play())
+while (true){
+    console.log(play());
+}
